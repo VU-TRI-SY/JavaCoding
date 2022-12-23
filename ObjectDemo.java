@@ -5,27 +5,27 @@ class Point{
         x = y = 0;
     }
 
-    public Point(int x_){
-        x = y = x_;
+    public Point(int x){
+        this.x = x;
+        this.y = x;
     }
 
-    public Point(int x_, int y_){
-        x = x_;
-        y = y_;
+    public Point(int x, int y){
+        this.x = x;
+        this.y = y;
     }
 
     public String toString(){
-        //(1, 2)
         return "(" + x + ", " + y + ")";
     }
 
-    public void setX(int x_){
-        x = x_;
+    public void setX(int x){
+        this.x = x;
 
     }
 
-    public void setY(int y_){
-        y = y_;
+    public void setY(int y){
+        this.y = y;
     }
 }
 
@@ -37,12 +37,27 @@ public class ObjectDemo{
         p.setY(200);
     }
    public static void main(String[] args){
-        Point p1 = new Point(1,2);
-        System.out.println("Before: " + p1.toString());
-        changePoint(p1);
-        System.out.println("After: " + p1.toString());
+    // Trong java, một string là constant--> không thể thay đổi giá 
+    // trị của string
+        // Point p1 = new Point(1,2);
+        // System.out.println("Before: " + p1.toString());
+        // changePoint(p1);
+        // System.out.println("After: " + p1.toString());
 
-
+        String s1 = "Hello"; //constant string
+        // String s2 = "Hello";
+        // String s3 = s1;
+        // s2 = "world";
+        // s1[0] = 'a';
+        for(int i = 0; i < s1.length(); i++){
+            System.out.println(s1.charAt(i));
+        }
+        // String s1 = new String("Hello"); //object string
+        // String s2 = new String("Hello");
+        // System.out.println(s1.equals(s2));
+        //String pool and string object
+        //so sanh 2 constan string ==
+        //so sanh 2 object string: equals();
    }
 
 }   

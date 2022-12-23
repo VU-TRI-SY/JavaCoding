@@ -119,10 +119,121 @@ public class Testa1 {
         return res;
     }
 
+
+    //--------------------------------------------------------------
+    public static int countNegatives( int[] arr){
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static int countDistinctNegatives(int[] arr){
+        int count = 0;
+        int len = arr.length;
+        int[] temp = new int[len];
+        for(int i = 0; i <= len-2; i++){
+            if(arr[i] < 0 && temp[i] == 0){
+                temp[i] = 1;
+                count++;
+                for(int j = i+1; j < len; j++){
+                    if(arr[j] == arr[i]){   
+                        temp[j] = 1;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+    public static int[] selectNegatives ( int[] arr ) {
+        int[] res = new int[countDistinctNegatives(arr)];
+        int id = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < 0) {
+                //check arr[i] co ton tai trong res chua
+                boolean check = false; //gia su khong ton tai arr[i] trong res
+                for(int j = 0; j < id; j++){
+                    if(res[j] == arr[i]){
+                        check = true; //ton tai arr[i] trong res
+                        break;
+                    }
+                }
+                if(check == false){ //tuong duong voi if(!check)
+                    res[id] = arr[i];
+                    id++;
+                }
+            }
+        }
+        return res;
+    }
+
+    public static int[] copyAndInvert ( int[] arr) {
+        int [] res = new int [arr.length];
+        int i = 0, j = arr.length - 1;
+        while (j >= 0) {
+            res[i] = arr[j];
+            i++;
+            j--;
+        }
+        return res;
+    }
+
+    public static int[] addArrays ( int[] arr1, int[] arr2) {
+        if (arr1.length != arr2.length) {
+            return new int[0];
+        }
+
+        int [] res = new int[arr1.length];
+            for ( int i = 0; i < arr1.length; i++) {
+                res[i] = arr1[i] + arr2[i];
+            }
+        return res;
+    }
+
+    public static boolean twoTimes( int[] arr) {
+        int count = 0;
+        for ( int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++){
+                if (arr[i] == arr[j]) {
+                    count++;
+                }
+            }
+            if (count !=2) {
+                return false;
+            }
+            else {
+                count = 0;
+            }
+        }
+        return true;
+    }
+
+    public static int countSequences(int[] arr){
+        int count = 0;
+        int len = arr.length;
+        int i = 1;
+        //0,0,0,80,7,1,0,11,72,0,0,37,0, 0
+        while(i < len){
+            if(arr[i] == 0 && arr[i-1] != 0){
+                count++;
+            }
+            if(i == len-1 && arr[i] != 0){
+                count++;
+            }
+            i++;
+        }
+
+        return count;
+    }
+
     public static void main(String[] args){
-        int[] arr = {0, -7, 1};
-        int[] res = copyStartingValues(arr);
-        System.out.println(toString(res));
+        int[] arr = {80,0,1,0,11,72,0,0,37,61,0,4, 5, 0, 6};
+        
+        System.out.println(countSequences(arr));
         
     }
 }

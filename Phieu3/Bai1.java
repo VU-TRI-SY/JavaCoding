@@ -71,11 +71,34 @@ public class Bai1 {
         // return (arr1[i] == arr2[i]) && contentCheck(arr1, arr2, i-1);
     }
 
+    public static boolean palindrome(char[] arr, int i){
+        if(i < 0) return false;
+        if(i < arr.length/2) return true;
+        if(arr[i] != arr[arr.length - i - 1]) return false;
+        else return palindrome(arr, i-1);
+    }
+
+    public static int getIndex(int[] arr, int i, int x){
+        if(i < 0) return -1;
+        // if(arr[i] == x){
+        //     int res = getIndex(arr, i-1, x);
+        //     if(res == -1) return i; //not found x in [0, i-1] -> return this index (return i)
+        //     else return res;
+        // }else{
+        //     return getIndex(arr, i-1, x);
+        // }
+        int res = getIndex(arr, i-1, x);
+        if(arr[i] == x && res == -1) return i;
+        return res; 
+    }
+
+    public static String toString(int[] arr, int i){
+        if(i < 0) return "";
+        return toString(arr, i-1) + arr[i];
+    }
+
     public static void main(String[] args){
-        // int[] arr = {-1, -2, 1, 2, 4, -5, 0, 9, -6};
-        // int[] arr = {1,1,2,3,4,5,6,7,8,9};
-        char[] arr1 = {'a', 'b', 'c', 'd', 'e'};
-        char[] arr2 = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
-        System.out.println(contentCheck(arr1, arr2, arr1.length-1));
+        int[] arr = {1,2,3,4,5};
+        System.out.println(toString(arr, arr.length-1));
     }
 }

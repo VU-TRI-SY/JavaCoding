@@ -69,6 +69,8 @@ public class ArrayEx {
         return res;
     }
     //min = 0.5
+
+    
     public static void main(String[] args){
         int[] arr = {-4, -2, 4, 5, -3, 0, 1};
         System.out.println(xaXnhat(arr, 1));
